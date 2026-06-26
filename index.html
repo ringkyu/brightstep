@@ -15,8 +15,23 @@
 <style>
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:#0A0C11}
+  body{margin:0;background:radial-gradient(ellipse 90% 70% at 20% 20%, #0D1F38 0%, #080D18 45%, #040810 100%) fixed}
   ::selection{background:#E8A020;color:#0E1726}
+
+  /* ── 투명 네비 ── */
+  #bs-nav{transition:background .4s,border-color .4s,backdrop-filter .4s}
+  #bs-nav.bs-nav-solid{background:color-mix(in srgb,#080D18 90%,transparent)!important;backdrop-filter:blur(16px)!important;border-bottom-color:rgba(255,255,255,.08)!important}
+
+  /* ── 타이핑 커서 ── */
+  @keyframes bs-blink{0%,100%{opacity:1}50%{opacity:0}}
+  #bs-typing-cursor{display:inline-block;width:3px;height:.85em;background:#E8A020;vertical-align:middle;margin-left:2px;animation:bs-blink .75s step-end infinite}
+
+  /* ── 스크롤 reveal ── */
+  .bs-reveal{opacity:0;transform:translateY(36px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .bs-reveal.bs-visible{opacity:1;transform:translateY(0)}
+  .bs-reveal-delay-1{transition-delay:.1s}
+  .bs-reveal-delay-2{transition-delay:.2s}
+  .bs-reveal-delay-3{transition-delay:.3s}
   .bs-svc{transition:background .32s,transform .32s,box-shadow .32s}
   .bs-svc:hover{background:#E8A020 !important;transform:translateY(-6px);box-shadow:0 20px 48px rgba(232,160,32,.35)}
   .bs-svc h3,.bs-svc p,.bs-svc span{transition:color .32s}
@@ -30,7 +45,7 @@
 <div ref="{{ rootRef }}" style="background:var(--canvas,#0A0C11);color:#fff;font-family:Pretendard,-apple-system,sans-serif;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased">
 
   <!-- ============ TOP NAV ============ -->
-  <header style="position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--canvas,#0A0C11) 86%, transparent);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)">
+  <header id="bs-nav" style="position:sticky;top:0;z-index:50;background:transparent;backdrop-filter:none;border-bottom:1px solid transparent">
     <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,72px);height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
       <a href="#hero" style="display:flex;align-items:center;text-decoration:none;flex-shrink:0">
         <img src="assets/logo.png" alt="BrightStep 브라이트스텝 컨설팅" style="height:34px;width:auto;display:block" />
@@ -56,7 +71,7 @@
           <span style="width:30px;height:2px;background:var(--accent,#E8A020)"></span>
           <span style="font:700 13px/1 Inter,sans-serif;letter-spacing:2.5px;color:var(--accent,#E8A020)">BRIGHTSTEP CONSULTING</span>
         </div>
-        <h1 style="margin:0;font:800 clamp(44px,7vw,88px)/1.03 Pretendard,sans-serif;letter-spacing:-.03em;color:#fff">다음 걸음을<br>밝히는 <span style="color:var(--accent,#E8A020)">실전</span>의<br>파트너</h1>
+        <h1 style="margin:0;font:800 clamp(44px,7vw,88px)/1.03 Pretendard,sans-serif;letter-spacing:-.03em;color:#fff">다음 걸음을<br>밝히는 <span id="bs-typing" style="color:var(--accent,#E8A020)">실전</span><span id="bs-typing-cursor"></span>의<br>파트너</h1>
         <p style="margin:32px 0 0;max-width:540px;font:300 19px/1.7 Pretendard,sans-serif;color:#B4BAC6">이론이 아닌 실행, 보고서가 아닌 결과. 서울·인천·강원·대전의 소상공인과 중소기업이 스스로 성장하도록, 현장에서 함께 뛰는 경영 컨설팅 파트너입니다.</p>
         <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:42px">
           <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 32px;background:var(--accent,#E8A020);color:#0E1726;font:700 16px/1 Pretendard,sans-serif;text-decoration:none;transition:.2s" style-hover="filter:brightness(1.08);transform:translateY(-2px)">무료 상담 신청<span style="font-size:17px">→</span></a>
@@ -84,7 +99,7 @@
   <!-- ============ CORE VALUES ============ -->
   <section style="position:relative;background-image:url('uploads/business_background.png');background-size:cover;background-position:center;background-repeat:no-repeat">
     <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,12,20,.82),rgba(8,12,20,.92));pointer-events:none"></div>
-    <div style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
+    <div class="bs-reveal" style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
     <div style="display:flex;align-items:center;gap:13px;margin-bottom:18px">
       <span style="width:30px;height:2px;background:var(--accent,#E8A020)"></span>
       <span style="font:700 13px/1 Inter,sans-serif;letter-spacing:2.5px;color:var(--accent,#E8A020)">WHAT WE STAND FOR</span>
@@ -105,7 +120,7 @@
 
   <!-- ============ SERVICES ============ -->
   <section id="services" style="background:#0E1A2D;border-top:1px solid rgba(255,255,255,.06)">
-    <div style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
+    <div class="bs-reveal" style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
       <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:56px">
         <div>
           <div style="display:flex;align-items:center;gap:13px;margin-bottom:18px">
@@ -188,7 +203,7 @@
   </section>
 
   <!-- ============ PROCESS ============ -->
-  <section id="process" style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
+  <section id="process" class="bs-reveal" style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
     <div style="display:flex;align-items:center;gap:13px;margin-bottom:18px">
       <span style="width:30px;height:2px;background:var(--accent,#E8A020)"></span>
       <span style="font:700 13px/1 Inter,sans-serif;letter-spacing:2.5px;color:var(--accent,#E8A020)">HOW IT WORKS</span>
@@ -210,7 +225,7 @@
   <!-- ============ TESTIMONIALS ============ -->
   <section style="position:relative;background:#0E1A2D;border-top:1px solid rgba(255,255,255,.06);overflow:hidden">
     <canvas ref="{{ bgRef }}" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none"></canvas>
-    <div style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
+    <div class="bs-reveal" style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
       <div style="display:flex;align-items:center;gap:13px;margin-bottom:18px">
         <span style="width:30px;height:2px;background:var(--accent,#E8A020)"></span>
         <span style="font:700 13px/1 Inter,sans-serif;letter-spacing:2.5px;color:var(--accent,#E8A020)">CLIENT VOICES</span>
@@ -221,17 +236,17 @@
           <button type="button" onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
         </sc-for>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:24px">
-        <sc-for list="{{ testimonials }}" as="item" hint-placeholder-count="8">
-          <figure style="position:relative;margin:0;background:#13243C;border:1px solid rgba(255,255,255,.07);padding:40px 36px 32px;display:flex;flex-direction:column;transition:.25s" style-hover="transform:translateY(-5px);border-color:rgba(232,160,32,.5)">
-            <sc-if value="{{ item.isActive }}" hint-placeholder-val="{{ false }}">
-              <span style="position:absolute;inset:0;border:2px solid var(--accent,#E8A020);pointer-events:none"></span>
+      <div style=”display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:24px”>
+        <sc-for list=”{{ testimonials }}” as=”item” hint-placeholder-count=”8”>
+          <figure style=”position:relative;margin:0;background:#13243C;border:1px solid rgba(255,255,255,.07);padding:40px 36px 32px;display:flex;flex-direction:column;transition:.25s” style-hover=”transform:translateY(-5px);border-color:rgba(232,160,32,.5)”>
+            <sc-if value=”{{ item.isActive }}” hint-placeholder-val=”{{ false }}”>
+              <span style=”position:absolute;inset:0;border:2px solid var(--accent,#E8A020);pointer-events:none”></span>
             </sc-if>
-            <span style="font:800 56px/.5 Inter,sans-serif;color:var(--accent,#E8A020);height:34px">“</span>
-            <blockquote style="margin:18px 0 28px;font:400 18px/1.65 Pretendard,sans-serif;color:#E6E9EE;flex:1">{{ item.q }}</blockquote>
-            <figcaption style="display:flex;align-items:center;gap:12px;padding-top:22px;border-top:1px solid rgba(255,255,255,.09)">
-              <span style="font:700 12px/1 Inter,sans-serif;letter-spacing:1px;color:var(--accent,#E8A020);white-space:nowrap">{{ item.loc }}</span>
-              <span style="font:300 14px/1.4 Pretendard,sans-serif;color:#9AA3B0">{{ item.who }}</span>
+            <span style=”font:800 56px/.5 Inter,sans-serif;color:var(--accent,#E8A020);height:34px”>”</span>
+            <blockquote style=”margin:18px 0 28px;font:400 18px/1.65 Pretendard,sans-serif;color:#E6E9EE;flex:1”>{{ item.q }}</blockquote>
+            <figcaption style=”display:flex;align-items:center;gap:12px;padding-top:22px;border-top:1px solid rgba(255,255,255,.09)”>
+              <span style=”font:700 12px/1 Inter,sans-serif;letter-spacing:1px;color:var(--accent,#E8A020);white-space:nowrap”>{{ item.loc }}</span>
+              <span style=”font:300 14px/1.4 Pretendard,sans-serif;color:#9AA3B0”>{{ item.who }}</span>
             </figcaption>
           </figure>
         </sc-for>
@@ -240,7 +255,7 @@
   </section>
 
   <!-- ============ PRICING ============ -->
-  <section id="pricing" style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
+  <section id="pricing" class="bs-reveal" style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
     <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:56px">
       <div>
         <div style="display:flex;align-items:center;gap:13px;margin-bottom:18px">
@@ -276,7 +291,7 @@
 
   <!-- ============ CONTACT / CTA ============ -->
   <section id="contact" style="background:#0E1A2D;border-top:1px solid rgba(255,255,255,.06)">
-    <div style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,88px);justify-content:space-between">
+    <div class="bs-reveal" style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,88px);justify-content:space-between">
       <div style="flex:1 1 380px;max-width:560px">
         <div style="display:flex;align-items:center;gap:13px;margin-bottom:24px">
           <span style="width:30px;height:2px;background:var(--accent,#E8A020)"></span>
@@ -643,6 +658,16 @@ class Component extends DCLogic {
       onSubmit: (e) => {
         e.preventDefault();
         if (!nameOk || !phoneOk) { this.setState({ showErr: true }); return; }
+        fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: this.state.name,
+            phone: this.state.phone,
+            region: this.state.region,
+            service: this.state.service,
+          }),
+        }).catch(() => {});
         this.setState({ submitted: true, showErr: false });
       },
       onReset: () => this.setState({ submitted: false, name: "", phone: "", showErr: false }),
@@ -654,6 +679,7 @@ class Component extends DCLogic {
   }
 }
 </script>
+  <script src="./animations.js"></script>
   <script src="./chatbot.js"></script>
 </body>
 </html>
