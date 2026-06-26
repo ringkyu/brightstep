@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#0A0C11}
+  ::selection{background:#E8A020;color:#0E1726}
+  .bs-svc{transition:background .32s,transform .32s,box-shadow .32s}
+  .bs-svc:hover{background:#E8A020 !important;transform:translateY(-6px);box-shadow:0 20px 48px rgba(232,160,32,.35)}
+  .bs-svc h3,.bs-svc p,.bs-svc span{transition:color .32s}
+  .bs-svc svg{transition:stroke .32s}
+  .bs-svc:hover h3{color:#0E1726 !important}
+  .bs-svc:hover p{color:#0E1726 !important}
+  .bs-svc:hover span{color:#0E1726 !important}
+  .bs-svc:hover svg{stroke:#0E1726 !important}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="background:var(--canvas,#0A0C11);color:#fff;font-family:Pretendard,-apple-system,sans-serif;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased">
+
+  <!-- ============ TOP NAV ============ -->
+  <header style="position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--canvas,#0A0C11) 86%, transparent);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)">
+    <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,72px);height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="#hero" style="display:flex;align-items:center;text-decoration:none;flex-shrink:0">
+        <img src="assets/logo.png" alt="BrightStep 브라이트스텝 컨설팅" style="height:34px;width:auto;display:block" />
+      </a>
+      <nav style="display:flex;align-items:center;gap:clamp(18px,2.4vw,34px);flex-shrink:0">
+        <a href="#services" data-spy="services" style="font:500 14px/1 Pretendard,sans-serif;color:#C2C7D0;text-decoration:none;transition:.25s;white-space:nowrap">서비스</a>
+        <a href="#process" data-spy="process" style="font:500 14px/1 Pretendard,sans-serif;color:#C2C7D0;text-decoration:none;transition:.25s;white-space:nowrap">프로세스</a>
+        <a href="#results" data-spy="results" style="font:500 14px/1 Pretendard,sans-serif;color:#C2C7D0;text-decoration:none;transition:.25s;white-space:nowrap">성과</a>
+        <a href="#pricing" data-spy="pricing" style="font:500 14px/1 Pretendard,sans-serif;color:#C2C7D0;text-decoration:none;transition:.25s;white-space:nowrap">요금</a>
+      </nav>
+      <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;background:var(--accent,#E8A020);color:#0E1726;font:700 14px/1 Pretendard,sans-serif;text-decoration:none;transition:.2s;white-space:nowrap;flex-shrink:0" style-hover="filter:brightness(1.08)">무료 상담 신청<span style="font-size:15px">→</span></a>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="hero" style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(72px,11vw,150px) clamp(20px,5vw,72px) clamp(64px,8vw,110px);overflow:hidden;background-image:url('uploads/hero_background.png');background-size:75%;background-position:85% center;background-repeat:no-repeat">
+    <sc-if value="{{ showWatermark }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;right:-2vw;bottom:-3vw;font:800 clamp(120px,20vw,300px)/.8 Inter,sans-serif;letter-spacing:-.04em;color:rgba(255,255,255,.025);pointer-events:none;user-select:none;white-space:nowrap">NEXT STEP</div>
+    </sc-if>
+    <div style="position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:48px;justify-content:space-between">
+      <div style="flex:1 1 480px;max-width:780px">
+        <div style="display:flex;align-items:center;gap:13px;margin-bottom:30px">
+          <span style="width:30px;height:2px;background:var(--accent,#E8A020)"></span>
+          <span style="font:700 13px/1 Inter,sans-serif;letter-spacing:2.5px;color:var(--accent,#E8A020)">BRIGHTSTEP CONSULTING</span>
+        </div>
+        <h1 style="margin:0;font:800 clamp(44px,7vw,88px)/1.03 Pretendard,sans-serif;letter-spacing:-.03em;color:#fff">다음 걸음을<br>밝히는 <span style="color:var(--accent,#E8A020)">실전</span>의<br>파트너</h1>
+        <p style="margin:32px 0 0;max-width:540px;font:300 19px/1.7 Pretendard,sans-serif;color:#B4BAC6">이론이 아닌 실행, 보고서가 아닌 결과. 서울·인천·강원·대전의 소상공인과 중소기업이 스스로 성장하도록, 현장에서 함께 뛰는 경영 컨설팅 파트너입니다.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:42px">
+          <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 32px;background:var(--accent,#E8A020);color:#0E1726;font:700 16px/1 Pretendard,sans-serif;text-decoration:none;transition:.2s" style-hover="filter:brightness(1.08);transform:translateY(-2px)">무료 상담 신청<span style="font-size:17px">→</span></a>
+          <a href="#services" style="display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 32px;background:transparent;color:#fff;font:600 16px/1 Pretendard,sans-serif;text-decoration:none;border:1px solid rgba(255,255,255,.32);transition:.2s" style-hover="border-color:#fff;background:rgba(255,255,255,.06)">서비스 살펴보기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS BAND ============ -->
+  <section id="results" ref="{{ statsRef }}" style="background:#0E1A2D;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)">
+    <div style="max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">
+        <sc-for list="{{ stats }}" as="item" hint-placeholder-count="4">
+          <div style="padding:clamp(40px,5vw,64px) 28px;border-left:1px solid rgba(255,255,255,.07)">
+            <div data-countup="{{ item.n }}" data-suffix="{{ item.suffix }}" data-dec="{{ item.dec }}" style="font:700 clamp(40px,5.5vw,64px)/1 'JetBrains Mono',monospace;color:var(--accent,#E8A020);letter-spacing:-.02em">{{ item.v }}</div>
+            <div style="margin-top:14px;font:300 14px/1.5 Pretendard,sans-serif;color:#9AA3B0">{{ item.l }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="font:400 12px/1.5 Pretendard,sans-serif;color:#5E6878;padding:0 28px 22px">2018–2024 누적 기준 · 6개월 매출 변화 기준</div>
+    </div>
+  </section>
+
+  <!-- ============ CORE VALUES ============ -->
+  <section style="position:relative;background-image:url('uploads/business_background.png');background-size:cover;background-position:center;background-repeat:no-repeat">
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,12,20,.82),rgba(8,12,20,.92));pointer-events:none"></div>
+    <div style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
+    <div style="display:flex;align-items:center;gap:13px;margin-bottom:18px">
+      <span style="width:30px;height:2px;background:var(--accent,#E8A020)"></span>
+      <span style="font:700 13px/1 Inter,sans-serif;letter-spacing:2.5px;color:var(--accent,#E8A020)">WHAT WE STAND FOR</span>
+    </div>
+    <h2 style="margin:0 0 56px;max-width:760px;font:800 clamp(32px,4.5vw,52px)/1.12 Pretendard,sans-serif;letter-spacing:-.025em;color:#fff">현장에서 증명하는<br>네 가지 원칙</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:rgba(255,255,255,.08)">
+      <sc-for list="{{ values }}" as="item" hint-placeholder-count="4">
+        <div style="background:transparent;padding:38px 30px 44px;transition:.25s" style-hover="background:rgba(255,255,255,.05)">
+          <div style="font:700 13px/1 'JetBrains Mono',monospace;color:var(--accent,#E8A020);letter-spacing:1px">{{ item.num }}</div>
+          <div style="margin:22px 0 6px;font:700 12px/1 Inter,sans-serif;letter-spacing:2px;color:#7C8696">{{ item.en }}</div>
+          <h3 style="margin:0 0 14px;font:700 22px/1.2 Pretendard,sans-serif;color:#fff">{{ item.ko }}</h3>
+          <p style="margin:0;font:300 15px/1.65 Pretendard,sans-serif;color:#A7AEBB">{{ item.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" style="background:#0E1A2D;border-top:1px solid rgba(255,255,255,.06)">
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:56px">
+        <div>
+          <div style="display:flex;align-items:center;gap:13px;margin-bottom:18px">
+            <span style="width:30px;height:2px;background:var(--accent,#E8A020)"></span>
+            <span style="font:700 13px/1 Inter,sans-serif;letter-spacing:2.5px;color:var(--accent,#E8A020)">SERVICES</span>
+          </div>
+          <h2 style="margin:0;max-width:680px;font:800 clamp(32px,4.5vw,52px)/1.12 Pretendard,sans-serif;letter-spacing:-.025em;color:#fff">진단부터 실행까지,<br>여섯 개의 전문 영역</h2>
+        </div>
+        <p style="max-width:330px;font:300 15px/1.7 Pretendard,sans-serif;color:#9AA3B0;margin:0">필요한 영역만 골라도, 전 과정을 맡겨도 좋습니다. 모든 컨설팅은 무료 초기 상담에서 시작합니다.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)">
+          <a href="#contact" class="bs-svc" style="display:block;background:#0E1A2D;padding:40px 34px 44px;text-decoration:none;" style-hover="background:#13243C">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span style="font:700 14px/1 'JetBrains Mono',monospace;color:var(--accent,#E8A020);letter-spacing:1px">01</span>
+              <span style="font:400 18px/1 Pretendard,sans-serif;color:#5E6878;transition:.25s" style-hover="color:#E8A020">→</span>
+            </div>
+            <div style="margin:22px 0 18px">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <h3 style="margin:0 0 14px;font:700 22px/1.25 Pretendard,sans-serif;color:#fff;letter-spacing:-.01em">경영 진단 & 전략 수립</h3>
+            <p style="margin:0;font:300 15px/1.7 Pretendard,sans-serif;color:#A7AEBB">재무 구조 분석부터 포지셔닝, 사업 다각화, 경영 회생까지 단·중장기 전략을 설계합니다.</p>
+          </a>
+          <a href="#contact" class="bs-svc" style="display:block;background:#0E1A2D;padding:40px 34px 44px;text-decoration:none;" style-hover="background:#13243C">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span style="font:700 14px/1 'JetBrains Mono',monospace;color:var(--accent,#E8A020);letter-spacing:1px">02</span>
+              <span style="font:400 18px/1 Pretendard,sans-serif;color:#5E6878;transition:.25s" style-hover="color:#E8A020">→</span>
+            </div>
+            <div style="margin:22px 0 18px">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></svg>
+            </div>
+            <h3 style="margin:0 0 14px;font:700 22px/1.25 Pretendard,sans-serif;color:#fff;letter-spacing:-.01em">마케팅 & 브랜딩</h3>
+            <p style="margin:0;font:300 15px/1.7 Pretendard,sans-serif;color:#A7AEBB">SNS·블로그·스마트스토어 운영 전략과 지역 밀착형 브랜드 정체성을 구축합니다.</p>
+          </a>
+          <a href="#contact" class="bs-svc" style="display:block;background:#0E1A2D;padding:40px 34px 44px;text-decoration:none;" style-hover="background:#13243C">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span style="font:700 14px/1 'JetBrains Mono',monospace;color:var(--accent,#E8A020);letter-spacing:1px">03</span>
+              <span style="font:400 18px/1 Pretendard,sans-serif;color:#5E6878;transition:.25s" style-hover="color:#E8A020">→</span>
+            </div>
+            <div style="margin:22px 0 18px">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 style="margin:0 0 14px;font:700 22px/1.25 Pretendard,sans-serif;color:#fff;letter-spacing:-.01em">인사·노무 & 조직 관리</h3>
+            <p style="margin:0;font:300 15px/1.7 Pretendard,sans-serif;color:#A7AEBB">근로계약 정비, 성과 평가 체계, 노무 리스크 점검까지 사람의 경쟁력을 세웁니다.</p>
+          </a>
+          <a href="#contact" class="bs-svc" style="display:block;background:#0E1A2D;padding:40px 34px 44px;text-decoration:none;" style-hover="background:#13243C">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span style="font:700 14px/1 'JetBrains Mono',monospace;color:var(--accent,#E8A020);letter-spacing:1px">04</span>
+              <span style="font:400 18px/1 Pretendard,sans-serif;color:#5E6878;transition:.25s" style-hover="color:#E8A020">→</span>
+            </div>
+            <div style="margin:22px 0 18px">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 7h10M7 10.5h6"/></svg>
+            </div>
+            <h3 style="margin:0 0 14px;font:700 22px/1.25 Pretendard,sans-serif;color:#fff;letter-spacing:-.01em">정부 지원사업 연계</h3>
+            <p style="margin:0;font:300 15px/1.7 Pretendard,sans-serif;color:#A7AEBB">복잡한 지원 제도를 대신 탐색하고 신청서 작성·제출까지 대행합니다.</p>
+          </a>
+          <a href="#contact" class="bs-svc" style="display:block;background:#0E1A2D;padding:40px 34px 44px;text-decoration:none;" style-hover="background:#13243C">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span style="font:700 14px/1 'JetBrains Mono',monospace;color:var(--accent,#E8A020);letter-spacing:1px">05</span>
+              <span style="font:400 18px/1 Pretendard,sans-serif;color:#5E6878;transition:.25s" style-hover="color:#E8A020">→</span>
+            </div>
+            <div style="margin:22px 0 18px">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polyline points="6 8 10 12 14 8 18 12"/></svg>
+            </div>
+            <h3 style="margin:0 0 14px;font:700 22px/1.25 Pretendard,sans-serif;color:#fff;letter-spacing:-.01em">디지털 전환(DX)</h3>
+            <p style="margin:0;font:300 15px/1.7 Pretendard,sans-serif;color:#A7AEBB">데이터 기반 경영으로의 전환 — 키오스크·POS·ERP 도입과 AI 도구 교육.</p>
+          </a>
+          <a href="#contact" class="bs-svc" style="display:block;background:#0E1A2D;padding:40px 34px 44px;text-decoration:none;" style-hover="background:#13243C">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <span style="font:700 14px/1 'JetBrains Mono',monospace;color:var(--accent,#E8A020);letter-spacing:1px">06</span>
+              <span style="font:400 18px/1 Pretendard,sans-serif;color:#5E6878;transition:.25s" style-hover="color:#E8A020">→</span>
+            </div>
+            <div style="margin:22px 0 18px">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#E8A020" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 4-3.5 7-7 9-3.5-2-7-5-7-9a7 7 0 0 1 7-7z"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
+            </div>
+            <h3 style="margin:0 0 14px;font:700 22px/1.25 Pretendard,sans-serif;color:#fff;letter-spacing:-.01em">창업 컨설팅</h3>
+            <p style="margin:0;font:300 15px/1.7 Pretendard,sans-serif;color:#A7AEBB">아이템 검증, 사업계획서, 상권 리포트, 창업 후 6개월 모니터링까지.</p>
+          </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section id="process" style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
+    <div style="display:flex;align-items:center;gap:13px;margin-bottom:18px">
+      <span style="width:30px;height:2px;background:var(--accent,#E8A020)"></span>
+      <span style="font:700 13px/1 Inter,sans-serif;letter-spacing:2.5px;color:var(--accent,#E8A020)">HOW IT WORKS</span>
+    </div>
+    <h2 style="margin:0 0 16px;max-width:760px;font:800 clamp(32px,4.5vw,52px)/1.12 Pretendard,sans-serif;letter-spacing:-.025em;color:#fff">다섯 걸음의 컨설팅 프로세스</h2>
+    <p style="margin:0 0 56px;max-width:560px;font:300 16px/1.7 Pretendard,sans-serif;color:#9AA3B0">한 번의 진단으로 끝나지 않습니다. 실행과 성과 모니터링까지, 한 단계씩 함께 올라갑니다.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)">
+      <sc-for list="{{ steps }}" as="item" hint-placeholder-count="5">
+        <div style="background:var(--canvas,#0A0C11);padding:34px 26px 40px;display:flex;flex-direction:column;gap:0;min-height:200px">
+          <div style="font:700 12px/1 Inter,sans-serif;letter-spacing:2px;color:#7C8696">STEP</div>
+          <div style="font:700 clamp(40px,4.4vw,54px)/1 'JetBrains Mono',monospace;color:var(--accent,#E8A020);letter-spacing:-.02em;margin:8px 0 auto">{{ item.num }}</div>
+          <h3 style="margin:24px 0 8px;font:700 19px/1.3 Pretendard,sans-serif;color:#fff">{{ item.title }}</h3>
+          <p style="margin:0;font:300 14px/1.6 Pretendard,sans-serif;color:#9AA3B0">{{ item.sub }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section style="position:relative;background:#0E1A2D;border-top:1px solid rgba(255,255,255,.06);overflow:hidden">
+    <canvas ref="{{ bgRef }}" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none"></canvas>
+    <div style="position:relative;max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
+      <div style="display:flex;align-items:center;gap:13px;margin-bottom:18px">
+        <span style="width:30px;height:2px;background:var(--accent,#E8A020)"></span>
+        <span style="font:700 13px/1 Inter,sans-serif;letter-spacing:2.5px;color:var(--accent,#E8A020)">CLIENT VOICES</span>
+      </div>
+      <h2 style="margin:0 0 26px;max-width:760px;font:800 clamp(32px,4.5vw,52px)/1.12 Pretendard,sans-serif;letter-spacing:-.025em;color:#fff">현장의 목소리로<br>증명합니다</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px">
+        <sc-for list="{{ regionTabs }}" as="tab" hint-placeholder-count="5">
+          <button type="button" onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:24px">
+        <sc-for list="{{ testimonials }}" as="item" hint-placeholder-count="8">
+          <figure style="position:relative;margin:0;background:#13243C;border:1px solid rgba(255,255,255,.07);padding:40px 36px 32px;display:flex;flex-direction:column;transition:.25s" style-hover="transform:translateY(-5px);border-color:rgba(232,160,32,.5)">
+            <sc-if value="{{ item.isActive }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute;inset:0;border:2px solid var(--accent,#E8A020);pointer-events:none"></span>
+            </sc-if>
+            <span style="font:800 56px/.5 Inter,sans-serif;color:var(--accent,#E8A020);height:34px">“</span>
+            <blockquote style="margin:18px 0 28px;font:400 18px/1.65 Pretendard,sans-serif;color:#E6E9EE;flex:1">{{ item.q }}</blockquote>
+            <figcaption style="display:flex;align-items:center;gap:12px;padding-top:22px;border-top:1px solid rgba(255,255,255,.09)">
+              <span style="font:700 12px/1 Inter,sans-serif;letter-spacing:1px;color:var(--accent,#E8A020);white-space:nowrap">{{ item.loc }}</span>
+              <span style="font:300 14px/1.4 Pretendard,sans-serif;color:#9AA3B0">{{ item.who }}</span>
+            </figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRICING ============ -->
+  <section id="pricing" style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:56px">
+      <div>
+        <div style="display:flex;align-items:center;gap:13px;margin-bottom:18px">
+          <span style="width:30px;height:2px;background:var(--accent,#E8A020)"></span>
+          <span style="font:700 13px/1 Inter,sans-serif;letter-spacing:2.5px;color:var(--accent,#E8A020)">PRICING</span>
+        </div>
+        <h2 style="margin:0;font:800 clamp(32px,4.5vw,52px)/1.12 Pretendard,sans-serif;letter-spacing:-.025em;color:#fff">규모에 맞춘 패키지</h2>
+      </div>
+      <p style="max-width:360px;font:300 15px/1.7 Pretendard,sans-serif;color:#9AA3B0;margin:0">정부 지원사업을 통해 컨설팅 비용 일부를 지원받을 수 있습니다. 상담 시 안내해 드립니다.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)">
+      <sc-for list="{{ pricing }}" as="item" hint-placeholder-count="5">
+        <div style="position:relative;background:var(--canvas,#0A0C11);padding:0;display:flex;flex-direction:column">
+          <sc-if value="{{ item.hot }}" hint-placeholder-val="{{ false }}">
+            <div style="height:3px;background:var(--accent,#E8A020)"></div>
+          </sc-if>
+          <div style="padding:36px 28px 32px;display:flex;flex-direction:column;flex:1">
+            <div style="height:41px;display:flex;align-items:flex-start;margin-bottom:18px">
+              <sc-if value="{{ item.hot }}" hint-placeholder-val="{{ false }}">
+                <span style="align-self:flex-start;font:700 11px/1 Inter,sans-serif;letter-spacing:1.5px;color:#0E1726;background:var(--accent,#E8A020);padding:6px 10px">MOST POPULAR</span>
+              </sc-if>
+            </div>
+            <h3 style="margin:0 0 18px;font:700 20px/1.3 Pretendard,sans-serif;color:#fff">{{ item.name }}</h3>
+            <div style="font:700 28px/1 'JetBrains Mono',monospace;color:var(--accent,#E8A020);letter-spacing:-.01em">{{ item.price }}</div>
+            <div style="margin:10px 0 22px;font:400 13px/1 Pretendard,sans-serif;color:#7C8696">기간 · {{ item.period }}</div>
+            <p style="margin:0 0 30px;font:300 14px/1.65 Pretendard,sans-serif;color:#A7AEBB;flex:1">{{ item.desc }}</p>
+            <a href="#contact" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;font:700 14px/1 Pretendard,sans-serif;text-decoration:none;transition:.2s;{{ item.btnStyle }}">상담 신청<span>→</span></a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT / CTA ============ -->
+  <section id="contact" style="background:#0E1A2D;border-top:1px solid rgba(255,255,255,.06)">
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(72px,9vw,128px) clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,88px);justify-content:space-between">
+      <div style="flex:1 1 380px;max-width:560px">
+        <div style="display:flex;align-items:center;gap:13px;margin-bottom:24px">
+          <span style="width:30px;height:2px;background:var(--accent,#E8A020)"></span>
+          <span style="font:700 13px/1 Inter,sans-serif;letter-spacing:2.5px;color:var(--accent,#E8A020)">FREE CONSULTATION</span>
+        </div>
+        <h2 style="margin:0;font:800 clamp(34px,5vw,60px)/1.08 Pretendard,sans-serif;letter-spacing:-.03em;color:#fff">“지금 어렵습니다.”<br>그 한 마디면<br>충분한 시작입니다.</h2>
+        <p style="margin:30px 0 40px;max-width:480px;font:300 17px/1.7 Pretendard,sans-serif;color:#B4BAC6">30분 무료 초기 상담으로 시작하세요. 전화, 이메일, 카카오톡 어디서든 편하게 연락 주시면 권역 담당 컨설턴트가 직접 안내해 드립니다.</p>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;align-items:center;gap:16px">
+            <span style="font:700 12px/1 Inter,sans-serif;letter-spacing:1.5px;color:var(--accent,#E8A020);width:80px">CALL</span>
+            <span style="font:400 17px/1 'JetBrains Mono',monospace;color:#fff">02-1234-5678</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px">
+            <span style="font:700 12px/1 Inter,sans-serif;letter-spacing:1.5px;color:var(--accent,#E8A020);width:80px">EMAIL</span>
+            <span style="font:400 16px/1 'JetBrains Mono',monospace;color:#fff">contact@brightstep.co.kr</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px">
+            <span style="font:700 12px/1 Inter,sans-serif;letter-spacing:1.5px;color:var(--accent,#E8A020);width:80px">HOURS</span>
+            <span style="font:300 15px/1 Pretendard,sans-serif;color:#B4BAC6">평일 09:00 – 18:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1 1 380px;max-width:480px;background:var(--canvas,#0A0C11);border:1px solid rgba(255,255,255,.1);padding:clamp(28px,3.5vw,44px)">
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:40px 8px;min-height:380px;justify-content:center">
+            <div style="width:64px;height:64px;background:var(--accent,#E8A020);display:flex;align-items:center;justify-content:center;font:700 30px/1 Pretendard,sans-serif;color:#0E1726">✓</div>
+            <h3 style="margin:30px 0 14px;font:800 26px/1.2 Pretendard,sans-serif;color:#fff">신청이 접수되었습니다</h3>
+            <p style="margin:0;font:300 16px/1.7 Pretendard,sans-serif;color:#B4BAC6;max-width:320px">담당 컨설턴트가 1영업일 이내에 연락드리겠습니다. 다음 걸음, 함께 시작하겠습니다.</p>
+            <button type="button" onClick="{{ onReset }}" style="margin-top:34px;height:48px;padding:0 26px;background:transparent;border:1px solid rgba(255,255,255,.32);color:#fff;font:600 14px/1 Pretendard,sans-serif;cursor:pointer;transition:.2s" style-hover="border-color:#fff">새 신청 작성</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:20px">
+            <h3 style="margin:0;font:700 20px/1.3 Pretendard,sans-serif;color:#fff">무료 상담 신청</h3>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <label style="font:600 12px/1 Pretendard,sans-serif;letter-spacing:.5px;color:#9AA3B0">이름 / 상호 *</label>
+              <input value="{{ fName }}" onChange="{{ onName }}" placeholder="홍길동 / OO가게" style="height:48px;padding:0 16px;background:#0E1626;border:1px solid rgba(255,255,255,.14);color:#fff;font:400 15px/1 Pretendard,sans-serif;outline:none" style-focus="border-color:#E8A020" />
+              <sc-if value="{{ errName }}" hint-placeholder-val="{{ false }}"><span style="font:400 12px/1 Pretendard,sans-serif;color:#E07A6B">이름 또는 상호를 입력해 주세요.</span></sc-if>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <label style="font:600 12px/1 Pretendard,sans-serif;letter-spacing:.5px;color:#9AA3B0">연락처 *</label>
+              <input value="{{ fPhone }}" onChange="{{ onPhone }}" placeholder="010-0000-0000" style="height:48px;padding:0 16px;background:#0E1626;border:1px solid rgba(255,255,255,.14);color:#fff;font:400 15px/1 'JetBrains Mono',monospace;outline:none" style-focus="border-color:#E8A020" />
+              <sc-if value="{{ errPhone }}" hint-placeholder-val="{{ false }}"><span style="font:400 12px/1 Pretendard,sans-serif;color:#E07A6B">연락 가능한 번호를 입력해 주세요.</span></sc-if>
+            </div>
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
+              <div style="flex:1 1 130px;display:flex;flex-direction:column;gap:8px">
+                <label style="font:600 12px/1 Pretendard,sans-serif;letter-spacing:.5px;color:#9AA3B0">지역</label>
+                <select value="{{ fRegion }}" onChange="{{ onRegion }}" style="height:48px;padding:0 14px;background:#0E1626;border:1px solid rgba(255,255,255,.14);color:#fff;font:400 14px/1 Pretendard,sans-serif;outline:none;appearance:none" style-focus="border-color:#E8A020">
+                  <option value="서울">서울</option>
+                  <option value="인천">인천</option>
+                  <option value="강원">강원</option>
+                  <option value="대전">대전</option>
+                </select>
+              </div>
+              <div style="flex:1 1 130px;display:flex;flex-direction:column;gap:8px">
+                <label style="font:600 12px/1 Pretendard,sans-serif;letter-spacing:.5px;color:#9AA3B0">관심 서비스</label>
+                <select value="{{ fService }}" onChange="{{ onService }}" style="height:48px;padding:0 14px;background:#0E1626;border:1px solid rgba(255,255,255,.14);color:#fff;font:400 14px/1 Pretendard,sans-serif;outline:none;appearance:none" style-focus="border-color:#E8A020">
+                  <option value="경영 진단 & 전략">경영 진단·전략</option>
+                  <option value="마케팅 & 브랜딩">마케팅·브랜딩</option>
+                  <option value="인사·노무">인사·노무</option>
+                  <option value="정부 지원 연계">정부 지원 연계</option>
+                  <option value="디지털 전환">디지털 전환</option>
+                  <option value="창업">창업</option>
+                  <option value="아직 모르겠어요">아직 모르겠어요</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" style="height:54px;background:var(--accent,#E8A020);border:none;color:#0E1726;font:700 16px/1 Pretendard,sans-serif;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:10px" style-hover="filter:brightness(1.08)">상담 신청하기<span style="font-size:17px">→</span></button>
+            <p style="margin:0;font:300 12px/1.6 Pretendard,sans-serif;color:#5E6878">신청 시 개인정보는 상담 목적으로만 이용되며 안전하게 보호됩니다.</p>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:var(--canvas,#0A0C11);border-top:1px solid rgba(255,255,255,.08)">
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(56px,6vw,80px) clamp(20px,5vw,72px) 40px">
+      <div style="display:flex;flex-wrap:wrap;gap:48px;justify-content:space-between">
+        <div style="max-width:320px">
+          <a href="#hero" style="display:inline-flex;align-items:center;text-decoration:none;margin-bottom:20px">
+            <img src="assets/logo.png" alt="BrightStep 브라이트스텝 컨설팅" style="height:30px;width:auto;display:block" />
+          </a>
+          <p style="margin:0 0 8px;font:300 14px/1.6 Pretendard,sans-serif;color:#9AA3B0">브라이트스텝 컨설팅 주식회사</p>
+          <p style="margin:0;font:300 13px/1.6 Pretendard,sans-serif;color:#5E6878">서울특별시 마포구 월드컵북로 400, 5층<br>사업자등록번호 123-45-67890</p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:48px">
+          <div>
+            <div style="font:700 12px/1 Inter,sans-serif;letter-spacing:1.5px;color:#7C8696;margin-bottom:18px">권역별 직통</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;gap:12px"><span style="font:300 14px/1.4 Pretendard,sans-serif;color:#9AA3B0;width:64px">서울·인천</span><span style="font:400 14px/1.4 'JetBrains Mono',monospace;color:#C2C7D0">02-1234-5678</span></div>
+              <div style="display:flex;gap:12px"><span style="font:300 14px/1.4 Pretendard,sans-serif;color:#9AA3B0;width:64px">강원</span><span style="font:400 14px/1.4 'JetBrains Mono',monospace;color:#C2C7D0">033-987-6543</span></div>
+              <div style="display:flex;gap:12px"><span style="font:300 14px/1.4 Pretendard,sans-serif;color:#9AA3B0;width:64px">대전</span><span style="font:400 14px/1.4 'JetBrains Mono',monospace;color:#C2C7D0">042-876-5432</span></div>
+            </div>
+          </div>
+          <div>
+            <div style="font:700 12px/1 Inter,sans-serif;letter-spacing:1.5px;color:#7C8696;margin-bottom:18px">바로가기</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <a href="#services" style="font:300 14px/1 Pretendard,sans-serif;color:#9AA3B0;text-decoration:none;transition:.2s" style-hover="color:#fff">서비스</a>
+              <a href="#process" style="font:300 14px/1 Pretendard,sans-serif;color:#9AA3B0;text-decoration:none;transition:.2s" style-hover="color:#fff">프로세스</a>
+              <a href="#results" style="font:300 14px/1 Pretendard,sans-serif;color:#9AA3B0;text-decoration:none;transition:.2s" style-hover="color:#fff">성과</a>
+              <a href="#pricing" style="font:300 14px/1 Pretendard,sans-serif;color:#9AA3B0;text-decoration:none;transition:.2s" style-hover="color:#fff">요금</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:56px;padding-top:28px;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
+        <span style="font:300 12px/1.5 Pretendard,sans-serif;color:#5E6878">© 2024 BrightStep Consulting Co., Ltd. All Rights Reserved.</span>
+        <span style="font:400 11px/1 Inter,sans-serif;letter-spacing:1.5px;color:#5E6878">THE PRACTICAL PARTNER FOR THE NEXT STEP</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ FLOATING CTA ============ -->
+  <a href="#contact" ref="{{ fabRef }}" aria-label="무료 상담 신청" style="position:fixed;left:50%;bottom:clamp(16px,3vw,32px);transform:translateX(-50%) translateY(14px);z-index:60;display:inline-flex;align-items:center;gap:9px;height:54px;padding:0 26px;background:var(--accent,#E8A020);color:#0E1726;font:700 15px/1 Pretendard,sans-serif;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;box-shadow:0 12px 34px rgba(0,0,0,.45)">무료 상담<span style="font-size:16px">→</span></a>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1320,&quot;height&quot;:900},&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#E8A020&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;canvasTone&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;잉크 블랙&quot;,&quot;네이비 블랙&quot;,&quot;미드나잇&quot;],&quot;default&quot;:&quot;잉크 블랙&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showWatermark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = {
+    name: "", phone: "", region: "서울", service: "경영 진단 & 전략",
+    submitted: false, showErr: false, activeRegion: "전체"
+  };
+
+  componentDidMount() {
+    this.applyVars();
+    this._onScroll = () => this.handleScroll();
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    this.handleScroll();
+    if (this.statsEl && "IntersectionObserver" in window) {
+      this._io = new IntersectionObserver((ents) => {
+        ents.forEach((e) => { if (e.isIntersecting && !this._counted) { this._counted = true; this.animateCounts(); } });
+      }, { threshold: 0.3 });
+      this._io.observe(this.statsEl);
+    } else { this.animateCounts(); }
+  }
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener("scroll", this._onScroll);
+    if (this._io) this._io.disconnect();
+    if (this._bgRaf) cancelAnimationFrame(this._bgRaf);
+    if (this._bgMove) window.removeEventListener("mousemove", this._bgMove);
+    if (this._bgResize) window.removeEventListener("resize", this._bgResize);
+    if (this._bgRO) this._bgRO.disconnect();
+  }
+
+  _hex(h) { const n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; }
+
+  initBg(canvas) {
+    const ctx = canvas.getContext("2d");
+    const rand = (a, b) => a + Math.random() * (b - a);
+    const types = ["square", "diamond", "ring", "plus", "step", "tri"];
+    const shapes = [];
+    for (let i = 0; i < 20; i++) {
+      shapes.push({
+        x: Math.random(), y: Math.random(),
+        depth: rand(0.3, 1), size: rand(34, 104),
+        rot: rand(0, Math.PI * 2), drot: rand(-0.0022, 0.0022),
+        type: types[i % types.length], gold: Math.random() < 0.52,
+        alpha: rand(0.14, 0.40)
+      });
+    }
+    this._bg = { canvas, ctx, shapes, ac: this._hex(this.props.accentColor || "#E8A020"), navy: [74, 124, 176], mx: 0.5, my: 0.5, tmx: 0.5, tmy: 0.5, t: 0, W: 0, H: 0 };
+    this._bgResize = () => {
+      const r = canvas.getBoundingClientRect();
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      canvas.width = Math.max(1, Math.round(r.width * dpr));
+      canvas.height = Math.max(1, Math.round(r.height * dpr));
+      this._bg.W = r.width; this._bg.H = r.height;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    this._bgResize();
+    window.addEventListener("resize", this._bgResize);
+    if ("ResizeObserver" in window) { this._bgRO = new ResizeObserver(() => this._bgResize()); this._bgRO.observe(canvas); }
+    this._bgMove = (e) => {
+      const r = canvas.getBoundingClientRect();
+      this._bg.tmx = (e.clientX - r.left) / Math.max(1, r.width);
+      this._bg.tmy = (e.clientY - r.top) / Math.max(1, r.height);
+      this.drawBg();
+    };
+    window.addEventListener("mousemove", this._bgMove, { passive: true });
+    const loop = () => { this._bgRaf = requestAnimationFrame(loop); try { this.drawBg(); } catch (e) {} };
+    loop();
+  }
+
+  _drawShape(ctx, type, s) {
+    const h = s / 2;
+    if (type === "square") { ctx.strokeRect(-h, -h, s, s); }
+    else if (type === "diamond") { ctx.beginPath(); ctx.moveTo(0, -h); ctx.lineTo(h, 0); ctx.lineTo(0, h); ctx.lineTo(-h, 0); ctx.closePath(); ctx.fill(); }
+    else if (type === "ring") { ctx.beginPath(); ctx.arc(0, 0, h, 0, Math.PI * 2); ctx.stroke(); }
+    else if (type === "plus") { ctx.beginPath(); ctx.moveTo(0, -h); ctx.lineTo(0, h); ctx.moveTo(-h, 0); ctx.lineTo(h, 0); ctx.stroke(); }
+    else if (type === "tri") { ctx.beginPath(); ctx.moveTo(0, -h); ctx.lineTo(h, h); ctx.lineTo(-h, h); ctx.closePath(); ctx.stroke(); }
+    else if (type === "step") { const u = s / 3; ctx.beginPath(); ctx.rect(-h, h - u, u, u); ctx.rect(-h + u, h - 2 * u, u, 2 * u); ctx.rect(-h + 2 * u, h - 3 * u, u, 3 * u); ctx.stroke(); }
+  }
+
+  drawBg() {
+    const b = this._bg; if (!b) return;
+    const ctx = b.ctx; let W = b.W, H = b.H;
+    if (!W || !H) { this._bgResize(); W = b.W; H = b.H; if (!W || !H) return; }
+    b.t += 1;
+    b.mx += (b.tmx - b.mx) * 0.06; b.my += (b.tmy - b.my) * 0.06;
+    ctx.clearRect(0, 0, W, H);
+    const cx = W / 2, cy = H / 2, mxPx = b.mx * W, myPx = b.my * H;
+    const ac = b.ac, navy = b.navy, pts = [];
+    for (const s of b.shapes) {
+      const px = s.x * W + (mxPx - cx) * s.depth * 0.07;
+      const py = s.y * H + (myPx - cy) * s.depth * 0.07;
+      const dist = Math.hypot(px - mxPx, py - myPx);
+      const near = Math.max(0, 1 - dist / 380);
+      const col = s.gold ? ac : navy;
+      const a = Math.min(0.92, s.alpha + near * 0.55);
+      const sz = s.size * (0.85 + s.depth * 0.5) * (1 + near * 0.4);
+      ctx.save();
+      ctx.translate(px, py);
+      ctx.rotate(s.rot + b.t * s.drot);
+      ctx.lineWidth = 2.4;
+      ctx.strokeStyle = `rgba(${col[0]},${col[1]},${col[2]},${a})`;
+      ctx.fillStyle = `rgba(${col[0]},${col[1]},${col[2]},${a})`;
+      this._drawShape(ctx, s.type, sz);
+      ctx.restore();
+      pts.push({ px, py, near });
+    }
+    for (const p of pts) {
+      if (p.near > 0.02) {
+        ctx.strokeStyle = `rgba(${ac[0]},${ac[1]},${ac[2]},${p.near * 0.4})`;
+        ctx.lineWidth = 1.4;
+        ctx.beginPath(); ctx.moveTo(mxPx, myPx); ctx.lineTo(p.px, p.py); ctx.stroke();
+      }
+    }
+  }
+  componentDidUpdate() { this.applyVars(); }
+
+  handleScroll() {
+    const accent = this.props.accentColor || "#E8A020";
+    if (this.fabEl) {
+      const show = window.scrollY > 560;
+      this.fabEl.style.opacity = show ? "1" : "0";
+      this.fabEl.style.transform = show ? "translateX(-50%) translateY(0)" : "translateX(-50%) translateY(14px)";
+      this.fabEl.style.pointerEvents = show ? "auto" : "none";
+    }
+    if (!this.root) return;
+    const ids = ["services", "process", "results", "pricing"];
+    let active = null;
+    for (const id of ids) {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 140) active = id;
+    }
+    this.root.querySelectorAll("[data-spy]").forEach((a) => {
+      a.style.color = a.getAttribute("data-spy") === active ? accent : "#C2C7D0";
+    });
+  }
+
+  animateCounts() {
+    if (!this.root) return;
+    this.root.querySelectorAll("[data-countup]").forEach((el) => {
+      const target = parseFloat(el.getAttribute("data-countup"));
+      const suffix = el.getAttribute("data-suffix") || "";
+      const dec = parseInt(el.getAttribute("data-dec") || "0", 10);
+      const dur = 1500, start = performance.now();
+      const fmt = (v) => (dec ? v.toFixed(dec) : Math.round(v).toString()) + suffix;
+      const step = (now) => {
+        const p = Math.min(1, (now - start) / dur);
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(target * e);
+        if (p < 1) requestAnimationFrame(step); else el.textContent = fmt(target);
+      };
+      requestAnimationFrame(step);
+    });
+  }
+
+  applyVars() {
+    if (!this.root) return;
+    const accent = this.props.accentColor || "#E8A020";
+    const tones = { "잉크 블랙": "#0A0C11", "네이비 블랙": "#0B1322", "미드나잇": "#0D1A2E" };
+    const canvas = tones[this.props.canvasTone] || "#0A0C11";
+    this.root.style.setProperty("--accent", accent);
+    this.root.style.setProperty("--canvas", canvas);
+    if (this._bg) this._bg.ac = this._hex(accent);
+  }
+
+  renderVals() {
+    const accent = this.props.accentColor || "#E8A020";
+    const nameOk = this.state.name.trim().length > 0;
+    const phoneOk = /[0-9]/.test(this.state.phone) && this.state.phone.replace(/[^0-9]/g, "").length >= 8;
+
+    const pricing = [
+      { name: "스타터 진단", price: "90만원~", period: "2~4주", desc: "현장 진단 + 진단 보고서 + 1회 전략 미팅", hot: false },
+      { name: "성장 파트너십", price: "420만원~", period: "6개월", desc: "스타터 진단 + 실행 지원(월 2회) + 분기 리뷰", hot: true },
+      { name: "풀케어 파트너십", price: "월 90만원~", period: "12개월", desc: "전 서비스 + 월 4회 방문 + 전담 컨설턴트 배정", hot: false },
+      { name: "정부 지원 연계", price: "50만원~", period: "건별", desc: "지원사업 탐색 + 신청서 작성 + 제출 대행", hot: false },
+      { name: "창업 패키지", price: "200만원~", period: "3개월", desc: "아이템 검증 + 사업계획서 + 6개월 모니터링", hot: false }
+    ].map(p => ({
+      ...p,
+      btnStyle: p.hot
+        ? `background:${accent};color:#0E1726;border:none`
+        : "background:transparent;color:#fff;border:1px solid rgba(255,255,255,.28)"
+    }));
+
+    const ar = this.state.activeRegion;
+    const testimonials = [
+      { q: "처음엔 컨설팅이 뭔지도 몰랐는데, 6개월 동안 같이 뛰어주신 덕분에 지금은 스스로 경영 숫자를 보고 판단할 수 있게 됐어요.", who: "반찬가게 운영 · 박 모 대표", loc: "서울 은평구" },
+      { q: "정부 지원사업 연계로 설비를 교체하고 나니 불량률이 눈에 띄게 줄었습니다. 복잡한 서류 작업을 대신해주셔서 큰 도움이 됐어요.", who: "금속 부품 제조 · 이 모 대표", loc: "인천 부평구" },
+      { q: "마케팅을 배워본 적이 없는데 SNS 운영부터 하나하나 가르쳐주셨어요. 지금은 인스타그램으로만 예약이 꽉 찹니다.", who: "카페 운영 · 최 모 대표", loc: "강원 춘천" },
+      { q: "세금 신고만 하는 게 경영인 줄 알았는데, 이제는 원가 분석에서 인사 관리까지 체계가 생겼습니다.", who: "치킨 프랜차이즈 · 장 모 대표", loc: "대전 서구" },
+      { q: "직원 퇴사가 잦아서 고민이 많았는데, 노무 체계를 정비하고 성과급 구조를 바꾸고 나서 이직률이 절반 이하로 줄었어요.", who: "뷰티 샵 운영 · 윤 모 대표", loc: "서울 마포구" },
+      { q: "창업한 지 1년도 안 됐는데 상권 분석부터 메뉴 원가 계산까지 꼼꼼히 봐주셨어요. 덕분에 첫 해 흑자를 냈습니다.", who: "분식점 운영 · 오 모 대표", loc: "인천 남동구" },
+      { q: "ERP 도입이 너무 막막했는데 현장에 딱 맞는 시스템을 골라주시고 직원 교육까지 함께 해주셔서 정말 수월했어요.", who: "가구 제조·도소매 · 한 모 대표", loc: "대전 유성구" },
+      { q: "관광 비수기에 매출이 반토막 났었는데, 온라인 채널 전략을 새로 짜고 나서 비수기에도 작년 성수기 수준을 유지하고 있습니다.", who: "게스트하우스 운영 · 정 모 대표", loc: "강원 강릉" }
+    ].map(t => ({ ...t, isActive: ar !== "전체" && t.loc.startsWith(ar) }));
+    const tabBase = "padding:9px 18px;background:transparent;border:1px solid rgba(255,255,255,.16);color:#9AA3B0;font:600 13px/1 Pretendard,sans-serif;cursor:pointer;transition:.2s";
+    const regionTabs = ["전체", "서울", "인천", "강원", "대전"].map(r => ({
+      label: r,
+      onClick: () => this.setState({ activeRegion: r }),
+      style: tabBase + (r === ar ? `;border-color:${accent};color:#fff;background:color-mix(in srgb, ${accent} 14%, transparent)` : "")
+    }));
+
+    return {
+      rootRef: (el) => { this.root = el; this.applyVars(); },
+      statsRef: (el) => { this.statsEl = el; },
+      fabRef: (el) => { this.fabEl = el; },
+      bgRef: (el) => { if (el && el !== this.bgEl) { this.bgEl = el; this.initBg(el); } },
+      regionTabs,
+      showWatermark: this.props.showWatermark ?? true,
+
+      values: [
+        { num: "01", en: "FIELD", ko: "현장성", desc: "책상 위 이론이 아니라 매장·공장·사무실 현장에서 진짜 문제를 찾습니다." },
+        { num: "02", en: "INTEGRITY", ko: "신뢰성", desc: "이익보다 관계를, 계약보다 신뢰를 먼저 둡니다. 경영 정보는 철저히 보호합니다." },
+        { num: "03", en: "PRACTICALITY", ko: "실용성", desc: "화려한 보고서보다 현장에서 바로 실행할 수 있는 한 가지 행동 계획을 드립니다." },
+        { num: "04", en: "CONTINUITY", ko: "지속성", desc: "진단으로 끝내지 않습니다. 실행·모니터링·재조정까지 함께 갑니다." }
+      ],
+      services: [
+        { num: "01", title: "경영 진단 & 전략 수립", desc: "재무 구조 분석부터 포지셔닝, 사업 다각화, 경영 회생까지 단·중장기 전략을 설계합니다." },
+        { num: "02", title: "마케팅 & 브랜딩", desc: "SNS·블로그·스마트스토어 운영 전략과 지역 밀착형 브랜드 정체성을 구축합니다." },
+        { num: "03", title: "인사·노무 & 조직 관리", desc: "근로계약 정비, 성과 평가 체계, 노무 리스크 점검까지 사람의 경쟁력을 세웁니다." },
+        { num: "04", title: "정부 지원사업 연계", desc: "복잡한 지원 제도를 대신 탐색하고 신청서 작성·제출까지 대행합니다." },
+        { num: "05", title: "디지털 전환(DX)", desc: "데이터 기반 경영으로의 전환 — 키오스크·POS·ERP 도입과 AI 도구 교육." },
+        { num: "06", title: "창업 컨설팅", desc: "아이템 검증, 사업계획서, 상권 리포트, 창업 후 6개월 모니터링까지." }
+      ],
+      steps: [
+        { num: "01", title: "무료 초기 상담", sub: "30분 · 온·오프라인" },
+        { num: "02", title: "현장 진단", sub: "1~2일 · 직접 방문" },
+        { num: "03", title: "맞춤 전략 수립", sub: "진단 보고서 + 실행 로드맵" },
+        { num: "04", title: "실행 지원", sub: "월 1~4회 · 현장 동행" },
+        { num: "05", title: "성과 모니터링", sub: "KPI 추적 + 분기 리뷰" }
+      ],
+      stats: [
+        { v: "640+", n: 640, suffix: "+", dec: 0, l: "누적 컨설팅 기업" },
+        { v: "78%", n: 78, suffix: "%", dec: 0, l: "정부 지원 연계 성공률" },
+        { v: "71%", n: 71, suffix: "%", dec: 0, l: "매출 증가 고객 비율" },
+        { v: "4.7", n: 4.7, suffix: "", dec: 1, l: "평균 고객 만족도 / 5.0" }
+      ],
+      testimonials,
+      pricing,
+
+      fName: this.state.name,
+      fPhone: this.state.phone,
+      fRegion: this.state.region,
+      fService: this.state.service,
+      onName: (e) => this.setState({ name: e.target.value }),
+      onPhone: (e) => this.setState({ phone: e.target.value }),
+      onRegion: (e) => this.setState({ region: e.target.value }),
+      onService: (e) => this.setState({ service: e.target.value }),
+      onSubmit: (e) => {
+        e.preventDefault();
+        if (!nameOk || !phoneOk) { this.setState({ showErr: true }); return; }
+        this.setState({ submitted: true, showErr: false });
+      },
+      onReset: () => this.setState({ submitted: false, name: "", phone: "", showErr: false }),
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      errName: this.state.showErr && !nameOk,
+      errPhone: this.state.showErr && !phoneOk
+    };
+  }
+}
+</script>
+  <script src="./chatbot.js"></script>
+</body>
+</html>
